@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["deno.window", "deno.dom"],
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true
+  },
+  "tasks": {
+    "build": {
+      "command": "deno run --allow-net --allow-env src/index.ts",
+      "description": "Run the M-Pesa STK push server"
+    }
+  },
+  "lint": {
+    "include": ["src/**/*.ts"],
+    "exclude": ["**/*.test.ts"],
+    "rules": {
+      "tags": ["recommended"]
+    }
+  }
+}

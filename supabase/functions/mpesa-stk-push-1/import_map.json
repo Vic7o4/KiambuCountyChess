@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "http": "https://deno.land/std/http/mod.ts",
+    "dotenv": "https://deno.land/x/dotenv/mod.ts",
+    "fetch": "https://deno.land/x/fetch/mod.ts"
+  }
+}
