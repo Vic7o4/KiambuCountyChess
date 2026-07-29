@@ -59,13 +59,6 @@ const Navbar = () => {
 
           {/* Login + Mobile toggle */}
           <div className="flex items-center gap-2 shrink-0">
-            <Link
-              to="/admin/login"
-              className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-5 py-2 rounded-md text-sm font-bold hover:opacity-90 transition-all shadow-sm"
-            >
-              <LogIn className="h-4 w-4" />
-              <span className="hidden sm:inline">Login</span>
-            </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden text-foreground p-1"

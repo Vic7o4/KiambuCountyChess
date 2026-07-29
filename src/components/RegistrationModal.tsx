@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import type { ChessEvent } from "@/data/mockData";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { getAgeGroup } from "@/lib/utils";
 
 interface RegistrationModalProps {
   event: ChessEvent;
@@ -35,6 +36,8 @@ const RegistrationModal = ({ event, onClose }: RegistrationModalProps) => {
   const [paymentCode, setPaymentCode] = useState("");
   const [mpesaPhone, setMpesaPhone] = useState("");
   const [mpesaPromptSent, setMpesaPromptSent] = useState(false);
+
+  const ageGroup = age && !Number.isNaN(Number(age)) ? getAgeGroup(Number(age)) : "";
 
   const [numberOfPlayers, setNumberOfPlayers] = useState("");
   const [groupPlayers, setGroupPlayers] = useState<GroupPlayer[]>([{ name: "", age: "" }]);
@@ -201,6 +204,11 @@ const RegistrationModal = ({ event, onClose }: RegistrationModalProps) => {
                   <div>
                     <Label htmlFor="age">Age *</Label>
                     <Input id="age" type="number" value={age} onChange={(e) => setAge(e.target.value)} placeholder="Age" />
+                    {age && !Number.isNaN(Number(age)) && (
+                      <div className="mt-1 text-xs text-muted-foreground">
+                        Age group: <span className="font-semibold text-foreground">{ageGroup}</span>
+                      </div>
+                    )}
                   </div>
                   <div>
                     <Label htmlFor="club">Club / School *</Label>
@@ -309,6 +317,9 @@ const RegistrationModal = ({ event, onClose }: RegistrationModalProps) => {
                           onChange={(e) => updateGroupPlayer(index, "age", e.target.value)}
                           placeholder="Age"
                         />
+                        {player.age && !Number.isNaN(Number(player.age)) && (
+                          <p className="text-xs text-muted-foreground mt-1">{getAgeGroup(Number(player.age))}</p>
+                        )}
                       </div>
                       {groupPlayers.length > 1 && (
                         <button onClick={() => removeGroupPlayer(index)} className="text-destructive mb-1">

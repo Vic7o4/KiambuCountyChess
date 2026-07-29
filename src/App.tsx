@@ -7,15 +7,12 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AdminLayout from "@/components/AdminLayout";
-import ProtectedRoute from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import Events from "./pages/Events";
 import Gallery from "./pages/Gallery";
 import News from "./pages/News";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import AdminLogin from "./pages/admin/AdminLogin";
-import ResetPassword from "./pages/admin/ResetPassword";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminEvents from "./pages/admin/AdminEvents";
 import AdminRegistrations from "./pages/admin/AdminRegistrations";
@@ -49,12 +46,8 @@ const App = () => (
             <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
             <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
 
-            {/* Admin Login (public) */}
-            <Route path="/admin/login" element={<AdminLogin />} />
-            <Route path="/reset-password" element={<ResetPassword />} />
-
-            {/* Admin Routes (protected) */}
-            <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
+            {/* Admin Routes */}
+            <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />
               <Route path="events" element={<AdminEvents />} />
               <Route path="registrations" element={<AdminRegistrations />} />
